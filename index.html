@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redes Sociais · Clarice Maggi — Opção B (Painel por rede)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#403033;--wine:#7B474A;--mute:#6D645F;--cream:#FCFAF8;--paper:#FFFFFF;--blush:#EFE7E9;--line:#ECE5E1;--up:#356E35;--down:#AF2828}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;font-size:14.5px;line-height:1.45}
+header{background:var(--ink);color:#FCFAF8;padding:22px 28px 0}
+.hin{max-width:1180px;margin:0 auto}
+.row{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+h1{font-family:Cinzel,serif;font-weight:500;font-size:26px;letter-spacing:.06em;margin:0}
+.meta{font-size:12.5px;color:rgba(252,250,248,.72)}
+.meta b{color:#FCFAF8;font-weight:500}
+.pseg{display:inline-flex;background:rgba(252,250,248,.1);border-radius:999px;padding:3px;gap:2px;margin-top:8px}
+.pseg button{border:0;background:transparent;font:500 12.5px "DM Sans",sans-serif;color:rgba(252,250,248,.75);padding:6px 13px;border-radius:999px;cursor:pointer}
+.pseg button:hover{color:#FCFAF8}
+.pseg button[aria-pressed=true]{background:#FCFAF8;color:var(--ink)}
+.right{text-align:right}
+.tabs{display:flex;gap:4px;margin-top:20px;overflow-x:auto}
+.tab{appearance:none;border:0;background:transparent;color:rgba(252,250,248,.7);font:500 14px "DM Sans",sans-serif;padding:11px 16px 13px;border-radius:10px 10px 0 0;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.tab:hover{color:#FCFAF8;background:rgba(252,250,248,.06)}
+.tab[aria-selected=true]{background:var(--cream);color:var(--ink)}
+.tab i{width:9px;height:9px;border-radius:50%;display:inline-block}
+main{max-width:1180px;margin:0 auto;padding:24px 28px 48px}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .l{font-size:12px;color:var(--mute)}
+.kpi .v{font-size:24px;font-weight:700;letter-spacing:-.01em;margin:2px 0;font-variant-numeric:tabular-nums}
+.dl{font-size:12px;font-weight:700;white-space:nowrap}
+.dl.up{color:var(--up)}.dl.down{color:var(--down)}.dl.flat,.dl.na{color:var(--mute);font-weight:500}
+.grid2{display:grid;grid-template-columns:1.65fr 1fr;gap:16px;margin-top:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.ch{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+h2{font-size:15px;font-weight:700;margin:0}
+.seg{display:inline-flex;background:var(--blush);border-radius:9px;padding:3px}
+.seg button{border:0;background:transparent;font:500 12.5px "DM Sans",sans-serif;color:var(--mute);padding:6px 11px;border-radius:7px;cursor:pointer}
+.seg button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(64,48,51,.12)}
+.cap{font-size:12.5px;color:var(--mute);margin:0 0 6px}
+svg text{font-family:"DM Sans",sans-serif}
+.ax{font-size:11.5px;fill:var(--mute)}.ax.faint{fill:#A79E99;font-size:10.5px}
+.grid{stroke:var(--line)}.base{stroke:#CFC6C1}.cross{stroke:#B5ABA6}
+.share{margin-top:4px}
+.sr{display:grid;grid-template-columns:86px 1fr 58px;gap:10px;align-items:center;margin:11px 0;font-size:13px;cursor:pointer;border-radius:6px}
+.sr:hover .t{filter:brightness(.97)}
+.sr .t{height:14px;background:var(--blush);border-radius:7px;overflow:hidden}
+.sr .t span{display:block;height:100%;border-radius:0 7px 7px 0}
+.sr .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--mute)}
+.sr.off{opacity:.38}
+.eng{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.eng div{background:var(--blush);border-radius:10px;padding:10px 10px}
+.eng .l{font-size:12px;color:var(--mute)}.eng .v{font-size:16px;white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums}
+.aud{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.cols{display:flex;align-items:flex-end;gap:10px;height:120px;margin-top:10px}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;font-size:12px;color:var(--mute)}
+.col .b{width:100%;max-width:44px;background:var(--wine);border-radius:4px 4px 0 0}
+.col .p{color:var(--ink);font-weight:700}
+.donutw{display:flex;align-items:center;gap:22px;margin-top:8px}
+.gl div{font-size:13px;color:var(--mute);margin:6px 0}.gl b{color:var(--ink)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--mute);margin:2px 0 4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.tcard{margin-top:16px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:760px}
+th{font-size:11.5px;color:var(--mute);font-weight:500;text-align:right;padding:8px 10px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+td{padding:11px 10px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr{cursor:pointer;transition:background .12s}
+tbody tr:hover{background:#FAF6F5}
+tbody tr.sel{background:var(--blush)}
+tbody tr:last-child td{border-bottom:0}
+td .h{display:block;font-size:11.5px;color:var(--mute)}
+tfoot td{font-weight:700;border-top:1px solid #D9D0CC;border-bottom:0}
+.empty{font-size:13px;color:var(--mute);padding:40px 0;text-align:center}
+footer{margin-top:28px;font-size:12px;color:var(--mute)}
+.tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(64,48,51,.14);border-radius:10px;padding:10px 12px;font-size:13px;min-width:170px;z-index:9}
+.tt{font-weight:700;margin-bottom:6px}.tr{display:flex;align-items:center;color:var(--mute)}.tr i{width:10px;height:10px;border-radius:3px;margin-right:6px;display:inline-block}.tr b{margin-left:auto;padding-left:14px;color:var(--ink)}
+.tr.tot{border-top:1px solid var(--line);margin-top:6px;padding-top:6px;color:var(--ink)}
+@media (max-width:980px){.kpis{grid-template-columns:repeat(3,1fr)}.grid2,.aud{grid-template-columns:1fr}}
+@media (max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}header,main{padding-left:16px;padding-right:16px}}
+</style>
+</head>
+<body>
+<header><div class="hin">
+  <div class="row">
+    <div><h1>CLARICE MAGGI</h1><div class="meta">Redes sociais · subconta Sérgio Demoliner (GoHighLevel)</div></div>
+    <div class="right"><div class="meta"><b id="per"></b> · vs. <span id="prev"></span> · atualizado <b id="upd"></b></div>
+      <div class="pseg" id="pseg"><button data-p="7">7 dias</button><button data-p="30">30 dias</button><button data-p="90">90 dias</button></div></div>
+  </div>
+  <div class="tabs" role="tablist" id="tabs"></div>
+</div></header>
+
+<main>
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="ch"><h2 id="ctitle">Evolução semanal</h2>
+        <div class="seg" id="metric">
+          <button data-m="impr" aria-pressed="true">Impressões</button>
+          <button data-m="likes" aria-pressed="false">Curtidas</button>
+          <button data-m="fol" aria-pressed="false">Seguidores</button>
+          <button data-m="posts" aria-pressed="false">Posts</button>
+        </div></div>
+      <p class="cap"><span id="lcap"></span></p>
+      <div class="legend" id="lgd"></div>
+      <div id="chart"></div>
+    </div>
+    <div class="card">
+      <h2 id="stitle">Participação nas impressões</h2>
+      <p class="cap" id="scap">Clique numa rede para abrir o detalhe.</p>
+      <div class="share" id="share"></div>
+      <div class="eng" id="eng"></div>
+    </div>
+  </div>
+
+  <div class="card tcard">
+    <div class="ch"><h2>Comparativo entre redes</h2><span class="cap" style="margin:0">Clique numa linha para abrir a rede · engajamento vs. período anterior</span></div>
+    <div class="tw"><table id="tbl"></table></div>
+    <p class="cap" style="margin:10px 0 0">“—” = a rede não envia esse dado ao GoHighLevel.</p>
+  </div>
+
+  <div class="aud">
+    <div class="card"><h2>Gênero do público</h2><p class="cap">Dados gerais do Instagram (não mudam com o período).</p><div class="donutw" id="donut"></div></div>
+    <div class="card"><h2>Faixa etária</h2><p class="cap">Dados gerais do Instagram (não mudam com o período).</p><div class="cols" id="cols"></div></div>
+  </div>
+
+  <footer>Fonte: GoHighLevel · Social Planner (estatísticas). “—” = a rede não envia esse dado (YouTube não informa impressões; TikTok e Pinterest não informam alcance).</footer>
+</main>
+<script>
+// Dados: GoHighLevel Social Planner · subconta "Sérgio Demoliner" (hD4naAu3xTYx8pYC99Fd)
+// Endpoint POST /social-media-posting/statistics — consultado em 18/11/2026
+const PERIODS = {"7": {"label": "7 dias", "unit": "dia", "period": "11 – 17 nov 2026", "prevPeriod": "4 – 10 nov 2026", "weeks": ["qua 11", "qui 12", "sex 13", "sáb 14", "dom 15", "seg 16", "ter 17"], "partial": [false, false, false, false, false, false, true], "nets": [{"key": "instagram", "name": "Instagram", "handle": "@claricemaggi.arquiteta", "color": "#8E3B46", "posts": 12, "postsCh": 0, "impr": 2060775, "imprCh": -5.03, "reach": 494812, "reachCh": 5.79, "likes": 38052, "comments": 10795, "shares": 3669, "engCh": -4.62, "followers": 4956, "s": {"impr": [268879, 292237, 330935, 286273, 321068, 279340, 282043], "fol": [679, 798, 765, 710, 1143, 861, 0], "likes": [6074, 5306, 5486, 4954, 7956, 4770, 3506], "posts": [2, 3, 3, 1, 1, 1, 1]}}, {"key": "facebook", "name": "Facebook", "handle": "Clarice Maggi Arquiteta", "color": "#3A73B0", "posts": 11, "postsCh": -8.33, "impr": 408765, "imprCh": 20.62, "reach": 208764, "reachCh": 8.43, "likes": 10223, "comments": 1456, "shares": 83, "engCh": 3.51, "followers": 971, "s": {"impr": [70160, 52752, 51197, 59303, 74487, 58871, 41995], "fol": [192, 126, 133, 137, 169, 123, 91], "likes": [1850, 1443, 1314, 1425, 1878, 1247, 1066], "posts": [3, 2, 3, 1, 1, 1, 0]}}, {"key": "tiktok", "name": "TikTok", "handle": "@claricemaggiarquiteta", "color": "#C8892B", "posts": 10, "postsCh": 42.86, "impr": 271917, "imprCh": 8.64, "reach": null, "reachCh": null, "likes": 8107, "comments": 256, "shares": 523, "engCh": 11.26, "followers": 639, "s": {"impr": [31305, 37168, 46641, 54482, 58804, 43517, 0], "fol": [69, 100, 120, 128, 137, 85, 0], "likes": [881, 1165, 1526, 1705, 1614, 1216, 0], "posts": [2, 2, 2, 1, 1, 1, 1]}}, {"key": "youtube", "name": "YouTube", "handle": "@claricemaggiarquitetura4916", "color": "#B05C9A", "posts": 7, "postsCh": -12.5, "impr": null, "imprCh": null, "reach": 0, "reachCh": -100.0, "likes": 0, "comments": 0, "shares": 0, "engCh": -100.0, "followers": 0, "s": {"impr": [0, 0, 0, 0, 0, 0, 0], "fol": [0, 0, 0, 0, 0, 0, 0], "likes": [0, 0, 0, 0, 0, 0, 0], "posts": [2, 2, 2, 1, 0, 0, 0]}}, {"key": "pinterest", "name": "Pinterest", "handle": "@claricemaggiarquiteta", "color": "#5C9A47", "posts": 6, "postsCh": -77.78, "impr": 0, "imprCh": null, "reach": null, "reachCh": null, "likes": 0, "comments": 0, "shares": 0, "engCh": null, "followers": 0, "s": {"impr": [0, 0, 0, 0, 0, 0, 0], "fol": [0, 0, 0, 0, 0, 0, 0], "likes": [0, 0, 0, 0, 0, 0, 0], "posts": [0, 0, 0, 0, 1, 0, 5]}}], "total": {"posts": 46, "postsCh": -30.3, "impr": 2741457, "imprCh": -0.64, "reach": 703576, "reachCh": -3.63, "likes": 56382, "comments": 12507, "shares": 4275, "followers": 6566}}, "30": {"label": "30 dias", "unit": "semana", "period": "18 out – 17 nov 2026", "prevPeriod": "17 set – 17 out 2026", "weeks": ["18 out", "19–25 out", "26 out–1 nov", "2–8 nov", "9–15 nov", "16–17 nov"], "partial": [true, false, false, false, false, true], "nets": [{"key": "instagram", "name": "Instagram", "handle": "@claricemaggi.arquiteta", "color": "#8E3B46", "posts": 47, "postsCh": 14.63, "impr": 8802868, "imprCh": 16.32, "reach": 1972983, "reachCh": 14.02, "likes": 159414, "comments": 36451, "shares": 16741, "engCh": 23.11, "followers": 20696, "s": {"impr": [297363, 1826489, 1813810, 2242613, 2061210, 561383], "fol": [675, 3858, 4016, 5766, 5520, 861], "likes": [6102, 33243, 29816, 42790, 39187, 8276], "posts": [1, 9, 10, 12, 13, 2]}}, {"key": "facebook", "name": "Facebook", "handle": "Clarice Maggi Arquiteta", "color": "#3A73B0", "posts": 45, "postsCh": 9.76, "impr": 1775944, "imprCh": -13.74, "reach": 973843, "reachCh": -13.48, "likes": 49247, "comments": 6100, "shares": 456, "engCh": -8.78, "followers": 4685, "s": {"impr": [90662, 539408, 313929, 302859, 428220, 100866], "fol": [338, 1541, 768, 674, 1150, 214], "likes": [2537, 15914, 9754, 7674, 11055, 2313], "posts": [1, 9, 10, 9, 15, 1]}}, {"key": "tiktok", "name": "TikTok", "handle": "@claricemaggiarquiteta", "color": "#C8892B", "posts": 35, "postsCh": 0, "impr": 1457690, "imprCh": 51.84, "reach": null, "reachCh": null, "likes": 41470, "comments": 1706, "shares": 2400, "engCh": 42.7, "followers": 3224, "s": {"impr": [115127, 487054, 245307, 276048, 290637, 43517], "fol": [188, 1105, 487, 669, 690, 85], "likes": [2625, 13166, 7791, 7922, 8750, 1216], "posts": [1, 7, 8, 7, 10, 2]}}, {"key": "youtube", "name": "YouTube", "handle": "@claricemaggiarquitetura4916", "color": "#B05C9A", "posts": 32, "postsCh": -30.43, "impr": null, "imprCh": null, "reach": 317032, "reachCh": 127.9, "likes": 13318, "comments": 408, "shares": 845, "engCh": 81.52, "followers": 995, "s": {"impr": [0, 0, 0, 0, 0, 0], "fol": [224, 365, 187, 195, 24, 0], "likes": [1908, 3654, 3082, 4181, 493, 0], "posts": [1, 7, 7, 7, 10, 0]}}, {"key": "pinterest", "name": "Pinterest", "handle": "@claricemaggiarquiteta", "color": "#5C9A47", "posts": 141, "postsCh": 23.68, "impr": 4635, "imprCh": -66.62, "reach": null, "reachCh": null, "likes": 0, "comments": 0, "shares": 0, "engCh": null, "followers": 0, "s": {"impr": [0, 4635, 0, 0, 0, 0], "fol": [0, 0, 0, 0, 0, 0], "likes": [0, 0, 0, 0, 0, 0], "posts": [2, 6, 67, 60, 1, 5]}}], "total": {"posts": 300, "postsCh": 8.3, "impr": 12041137, "imprCh": 13.59, "reach": 3263858, "reachCh": 8.98, "likes": 263449, "comments": 44665, "shares": 20442, "followers": 29600}}, "90": {"label": "90 dias", "unit": "mês", "period": "20 ago – 17 nov 2026", "prevPeriod": "22 mai – 19 ago 2026", "weeks": ["20–31 ago", "set", "out", "1–17 nov"], "partial": [true, false, false, true], "nets": [{"key": "instagram", "name": "Instagram", "handle": "@claricemaggi.arquiteta", "color": "#8E3B46", "posts": 125, "postsCh": 7.76, "impr": 25346100, "imprCh": 6.57, "reach": 5555037, "reachCh": 3.85, "likes": 475904, "comments": 98316, "shares": 52430, "engCh": -10.7, "followers": 60227, "s": {"impr": [3661588, 8808585, 7681524, 5194403], "fol": [8570, 21932, 16484, 13241], "likes": [76784, 167733, 135210, 96177], "posts": [15, 39, 43, 28]}}, {"key": "facebook", "name": "Facebook", "handle": "Clarice Maggi Arquiteta", "color": "#3A73B0", "posts": 137, "postsCh": -44.08, "impr": 6525220, "imprCh": -22.54, "reach": 3685075, "reachCh": -25.0, "likes": 168583, "comments": 17505, "shares": 1244, "engCh": -38.91, "followers": 21136, "s": {"impr": [1135657, 2649304, 1872641, 867618], "fol": [3328, 9928, 5760, 2120], "likes": [27010, 64676, 54814, 22083], "posts": [29, 41, 41, 26]}}, {"key": "tiktok", "name": "TikTok", "handle": "@claricemaggiarquiteta", "color": "#C8892B", "posts": 105, "postsCh": 3.96, "impr": 3659831, "imprCh": -38.74, "reach": null, "reachCh": null, "likes": 112128, "comments": 4374, "shares": 6842, "engCh": -50.53, "followers": 8121, "s": {"impr": [389917, 1323897, 1291403, 654614], "fol": [1137, 2815, 2635, 1534], "likes": [15231, 40849, 36845, 19203], "posts": [14, 37, 34, 20]}}, {"key": "youtube", "name": "YouTube", "handle": "@claricemaggiarquitetura4916", "color": "#B05C9A", "posts": 129, "postsCh": 74.32, "impr": null, "imprCh": null, "reach": 640112, "reachCh": 6811.16, "likes": 27894, "comments": 845, "shares": 1622, "engCh": 5180.17, "followers": 2263, "s": {"impr": [0, 0, 0, 0], "fol": [791, 89, 1132, 251], "likes": [6023, 1136, 15530, 5205], "posts": [29, 51, 31, 18]}}, {"key": "pinterest", "name": "Pinterest", "handle": "@claricemaggiarquiteta", "color": "#5C9A47", "posts": 270, "postsCh": 101.49, "impr": 43859, "imprCh": -84.0, "reach": null, "reachCh": null, "likes": 0, "comments": 0, "shares": 0, "engCh": null, "followers": 0, "s": {"impr": [25338, 0, 18521, 0], "fol": [0, 0, 0, 0], "likes": [0, 0, 0, 0], "posts": [14, 72, 118, 66]}}], "total": {"posts": 766, "postsCh": 14.33, "impr": 35575010, "imprCh": -7.49, "reach": 9880224, "reachCh": -3.81, "likes": 784509, "comments": 121040, "shares": 62138, "followers": 91747}}};
+const D = {
+  updated: "18/11/2026",
+  gender: [ { k: "Mulheres", v: 76.07 }, { k: "Homens", v: 7.92 }, { k: "Não informado", v: 16.0 } ],
+  age: [ ["13–17",785],["18–24",6539],["25–34",52376],["35–44",92735],["45–54",97607],["55–64",67660],["65+",34648] ]
+};
+function setPeriod(k) { Object.assign(D, PERIODS[k], { pkey: k }); }
+setPeriod("30");
+
+// ---------- helpers ----------
+const nf = new Intl.NumberFormat("pt-BR");
+function fmt(n) { return n == null ? "—" : nf.format(n); }
+function short(n) {
+  if (n == null) return "—";
+  const a = Math.abs(n);
+  if (a >= 1e6) return (n / 1e6).toLocaleString("pt-BR", { maximumFractionDigits: a < 1e7 ? 2 : 1 }) + " mi";
+  if (a >= 1e3) return (n / 1e3).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + " mil";
+  return nf.format(n);
+}
+function delta(ch) {
+  if (ch == null) return '<span class="dl na">sem comparação</span>';
+  const up = ch > 0, z = ch === 0;
+  const cls = z ? "flat" : up ? "up" : "down";
+  const arrow = z ? "→" : up ? "▲" : "▼";
+  return `<span class="dl ${cls}">${arrow} ${Math.abs(ch).toLocaleString("pt-BR", { maximumFractionDigits: 1 })}%</span>`;
+}
+function niceMax(v) {
+  const p = Math.pow(10, Math.floor(Math.log10(v || 1)));
+  for (const m of [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]) if (m * p >= v) return m * p;
+  return 10 * p;
+}
+const tip = (() => {
+  const el = document.createElement("div"); el.className = "tip"; document.body.appendChild(el);
+  return {
+    show(html, x, y) {
+      el.innerHTML = html; el.style.opacity = 1;
+      const r = el.getBoundingClientRect();
+      let left = x + 14, top = y + 14;
+      if (left + r.width > innerWidth - 8) left = x - r.width - 14;
+      if (top + r.height > innerHeight - 8) top = y - r.height - 14;
+      el.style.left = left + "px"; el.style.top = top + "px";
+    },
+    hide() { el.style.opacity = 0; }
+  };
+})();
+const NS = "http://www.w3.org/2000/svg";
+function svgEl(tag, attrs, parent) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+}
+
+// Stacked weekly bars: series = [{name,color,values}]
+function stackedBars(host, series, opts = {}) {
+  host.innerHTML = "";
+  const W = host.clientWidth || 640, H = opts.height || 260;
+  const m = { t: 12, r: 8, b: 44, l: 56 };
+  const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: "img" }, host);
+  const n = D.weeks.length, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const tot = D.weeks.map((_, i) => series.reduce((s, x) => s + x.values[i], 0));
+  const max = niceMax(Math.max(...tot));
+  for (let k = 0; k <= 4; k++) {
+    const v = (max / 4) * k, y = m.t + ih - (v / max) * ih;
+    svgEl("line", { x1: m.l, x2: W - m.r, y1: y, y2: y, class: k ? "grid" : "base" }, svg);
+    svgEl("text", { x: m.l - 8, y: y + 4, "text-anchor": "end", class: "ax" }, svg).textContent = short(v);
+  }
+  const bw = Math.min(56, (iw / n) * 0.56);
+  D.weeks.forEach((w, i) => {
+    const cx = m.l + (iw / n) * (i + 0.5);
+    let y0 = m.t + ih;
+    const g = svgEl("g", {}, svg);
+    series.forEach((s, si) => {
+      const v = s.values[i]; if (!v) return;
+      const h = (v / max) * ih;
+      const isTop = series.slice(si + 1).every(x => !x.values[i]);
+      const yTop = y0 - h;
+      const hh = Math.max(0, h - (isTop ? 0 : 2));
+      if (isTop) {
+        const r = Math.min(4, hh, bw / 2);
+        svgEl("path", { d: `M${cx - bw / 2},${y0} V${yTop + r} Q${cx - bw / 2},${yTop} ${cx - bw / 2 + r},${yTop} H${cx + bw / 2 - r} Q${cx + bw / 2},${yTop} ${cx + bw / 2},${yTop + r} V${y0} Z`,
+          fill: s.color, opacity: D.partial[i] ? 0.55 : 1 }, g);
+      } else {
+        svgEl("rect", { x: cx - bw / 2, y: yTop + 2, width: bw, height: hh, fill: s.color, opacity: D.partial[i] ? 0.55 : 1 }, g);
+      }
+      y0 = yTop;
+    });
+    const lab = svgEl("text", { x: cx, y: H - m.b + 18, "text-anchor": "middle", class: "ax" }, svg);
+    lab.textContent = w;
+    if (D.partial[i]) svgEl("text", { x: cx, y: H - m.b + 32, "text-anchor": "middle", class: "ax faint" }, svg).textContent = "parcial";
+    const hit = svgEl("rect", { x: cx - (iw / n) / 2, y: m.t, width: iw / n, height: ih, fill: "transparent" }, svg);
+    hit.addEventListener("mousemove", ev => {
+      const rows = series.filter(s => s.values[i]).map(s => `<div class="tr"><i style="background:${s.color}"></i>${s.name}<b>${fmt(s.values[i])}</b></div>`).reverse().join("");
+      tip.show(`<div class="tt">${w}${D.partial[i] ? " · semana parcial" : ""}</div>${rows}<div class="tr tot">Total<b>${fmt(tot[i])}</b></div>`, ev.clientX, ev.clientY);
+      g.style.filter = "brightness(1.08)";
+    });
+    hit.addEventListener("mouseleave", () => { tip.hide(); g.style.filter = ""; });
+  });
+}
+
+// Single-series line with crosshair
+function lineChart(host, values, color, label, opts = {}) {
+  host.innerHTML = "";
+  const W = host.clientWidth || 640, H = opts.height || 260;
+  const m = { t: 16, r: 16, b: 44, l: 56 };
+  const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: "img" }, host);
+  const n = values.length, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const max = niceMax(Math.max(...values, 1));
+  for (let k = 0; k <= 4; k++) {
+    const v = (max / 4) * k, y = m.t + ih - (v / max) * ih;
+    svgEl("line", { x1: m.l, x2: W - m.r, y1: y, y2: y, class: k ? "grid" : "base" }, svg);
+    svgEl("text", { x: m.l - 8, y: y + 4, "text-anchor": "end", class: "ax" }, svg).textContent = short(v);
+  }
+  const X = i => m.l + (iw / (n - 1)) * i, Y = v => m.t + ih - (v / max) * ih;
+  // area
+  let d = values.map((v, i) => `${i ? "L" : "M"}${X(i)},${Y(v)}`).join(" ");
+  svgEl("path", { d: d + ` L${X(n - 1)},${m.t + ih} L${X(0)},${m.t + ih} Z`, fill: color, opacity: 0.08 }, svg);
+  // solid for complete weeks, dashed into partial ends
+  const seg = (a, b, dash) => svgEl("path", { d: `M${X(a)},${Y(values[a])} L${X(b)},${Y(values[b])}`, stroke: color, "stroke-width": 2, fill: "none", "stroke-dasharray": dash ? "4 4" : "none", "stroke-linecap": "round" }, svg);
+  for (let i = 0; i < n - 1; i++) seg(i, i + 1, D.partial[i] || D.partial[i + 1]);
+  values.forEach((v, i) => svgEl("circle", { cx: X(i), cy: Y(v), r: 4, fill: D.partial[i] ? "#FCFAF8" : color, stroke: color, "stroke-width": 2 }, svg));
+  D.weeks.forEach((w, i) => {
+    svgEl("text", { x: X(i), y: H - m.b + 18, "text-anchor": i === 0 ? "start" : i === n - 1 ? "end" : "middle", class: "ax" }, svg).textContent = w;
+    if (D.partial[i]) svgEl("text", { x: X(i), y: H - m.b + 32, "text-anchor": i === 0 ? "start" : "end", class: "ax faint" }, svg).textContent = "parcial";
+  });
+  const cross = svgEl("line", { y1: m.t, y2: m.t + ih, class: "cross", opacity: 0 }, svg);
+  const dot = svgEl("circle", { r: 6, fill: color, stroke: "#fff", "stroke-width": 2, opacity: 0 }, svg);
+  const hit = svgEl("rect", { x: m.l, y: m.t, width: iw, height: ih, fill: "transparent" }, svg);
+  hit.addEventListener("mousemove", ev => {
+    const r = svg.getBoundingClientRect();
+    const px = (ev.clientX - r.left) * (W / r.width);
+    const i = Math.max(0, Math.min(n - 1, Math.round((px - m.l) / (iw / (n - 1)))));
+    cross.setAttribute("x1", X(i)); cross.setAttribute("x2", X(i)); cross.setAttribute("opacity", 1);
+    dot.setAttribute("cx", X(i)); dot.setAttribute("cy", Y(values[i])); dot.setAttribute("opacity", 1);
+    tip.show(`<div class="tt">${D.weeks[i]}${D.partial[i] ? " · semana parcial" : ""}</div><div class="tr"><i style="background:${color}"></i>${label}<b>${fmt(values[i])}</b></div>`, ev.clientX, ev.clientY);
+  });
+  hit.addEventListener("mouseleave", () => { tip.hide(); cross.setAttribute("opacity", 0); dot.setAttribute("opacity", 0); });
+}
+
+</script>
+<script>
+document.getElementById("upd").textContent = D.updated;
+const ALL = { key: "all", name: "Visão geral", color: "#7B474A" };
+let cur = "all", metric = "impr";
+const mLabel = { impr: "Impressões", likes: "Curtidas", fol: "Novos seguidores", posts: "Posts" };
+
+function sumSeries(m) { return D.weeks.map((_, i) => D.nets.reduce((s, n) => s + n.s[m][i], 0)); }
+
+function renderTabs() {
+  document.getElementById("tabs").innerHTML = [ALL, ...D.nets].map(n =>
+    `<button class="tab" role="tab" data-k="${n.key}" aria-selected="${n.key === cur}">${n.key === "all" ? "" : `<i style="background:${n.color}"></i>`}${n.name}</button>`).join("");
+  document.querySelectorAll(".tab").forEach(b => b.onclick = () => { cur = b.dataset.k; render(); });
+}
+function kpi(l, v, c) { return `<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div>${c === undefined ? '<span class="dl na">&nbsp;</span>' : delta(c)}</div>`; }
+
+const UNIT = { dia: ["por dia", "Ponto vazado = último dia, ainda sendo consolidado pelas redes."], semana: ["por semana", "Pontos vazados e linha tracejada = semanas incompletas."], "mês": ["por mês", "Pontos vazados e linha tracejada = meses incompletos."] };
+function render() {
+  renderTabs();
+  document.getElementById("per").textContent = D.period;
+  document.getElementById("prev").textContent = D.prevPeriod;
+  document.querySelectorAll("#pseg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.p === D.pkey));
+  document.getElementById("lcap").textContent = (cur === "all" ? "Barras empilhadas por rede · passe o mouse para ver os valores. " : "") + UNIT[D.unit][1].replace("Pontos vazados e linha tracejada", cur === "all" ? "Barras claras" : "Pontos vazados e linha tracejada").replace("Ponto vazado", cur === "all" ? "Barra clara" : "Ponto vazado");
+  const n = cur === "all" ? null : D.nets.find(x => x.key === cur);
+  const o = n || D.total;
+  document.getElementById("kpis").innerHTML =
+    kpi("Impressões", short(o.impr), o.imprCh ?? null) +
+    kpi("Alcance", short(o.reach), o.reachCh ?? null) +
+    kpi("Novos seguidores", fmt(o.followers)) +
+    kpi("Publicações", fmt(o.posts), o.postsCh ?? null) +
+    kpi("Curtidas", short(o.likes), n ? n.engCh : undefined) +
+    kpi("Comentários", short(o.comments));
+
+  // line chart
+  const vals = n ? n.s[metric] : sumSeries(metric);
+  const color = n ? n.color : ALL.color;
+  document.getElementById("ctitle").textContent = `${mLabel[metric]} ${UNIT[D.unit][0]} · ${n ? n.name : "todas as redes"}`;
+  const host = document.getElementById("chart");
+  const lgd = document.getElementById("lgd");
+  if (!n) {
+    const ser = D.nets.filter(x => x.s[metric].some(v => v)).map(x => ({ name: x.name, color: x.color, values: x.s[metric] }));
+    lgd.innerHTML = ser.map(x => `<span><i style="background:${x.color}"></i>${x.name}</span>`).join("");
+    stackedBars(host, ser, { height: 270 });
+  } else {
+    lgd.innerHTML = "";
+    if (vals.every(v => !v)) host.innerHTML = `<div class="empty">${n.name} não envia ${mLabel[metric].toLowerCase()} ao GoHighLevel neste período.</div>`;
+    else lineChart(host, vals, color, mLabel[metric]);
+  }
+
+  // comparison table
+  const T = D.total;
+  document.getElementById("tbl").innerHTML =
+    `<thead><tr><th>Rede</th><th>Posts</th><th>Impressões</th><th>Alcance</th><th>Novos seg.</th><th>Curtidas</th><th>Coment.</th><th>Compart.</th><th>Engajamento</th></tr></thead><tbody>` +
+    D.nets.map(x => `<tr data-k="${x.key}" class="${n && n.key === x.key ? "sel" : ""}"><td><span class="dot" style="background:${x.color}"></span>${x.name}<span class="h">${x.handle}</span></td>
+      <td>${fmt(x.posts)}</td><td>${short(x.impr)}</td><td>${short(x.reach)}</td><td>${fmt(x.followers)}</td><td>${fmt(x.likes)}</td><td>${fmt(x.comments)}</td><td>${fmt(x.shares)}</td><td>${delta(x.engCh)}</td></tr>`).join("") +
+    `</tbody><tfoot><tr><td>Total</td><td>${fmt(T.posts)}</td><td>${short(T.impr)}</td><td>${short(T.reach)}</td><td>${fmt(T.followers)}</td><td>${fmt(T.likes)}</td><td>${fmt(T.comments)}</td><td>${fmt(T.shares)}</td><td></td></tr></tfoot>`;
+  document.querySelectorAll("#tbl tbody tr").forEach(r => r.onclick = () => { cur = cur === r.dataset.k ? "all" : r.dataset.k; render(); });
+
+  // share bars
+  const impNets = D.nets.filter(x => x.impr);
+  const tot = impNets.reduce((s, x) => s + x.impr, 0);
+  document.getElementById("share").innerHTML = impNets.map(x =>
+    `<div class="sr ${n && n.key !== x.key ? "off" : ""}" data-k="${x.key}"><span><i class="dot" style="background:${x.color}"></i>${x.name}</span><div class="t"><span style="width:${Math.max(1, x.impr / tot * 100)}%;background:${x.color}"></span></div><span class="n">${(x.impr / tot * 100).toLocaleString("pt-BR",{maximumFractionDigits:1})}%</span></div>`).join("");
+  document.querySelectorAll(".sr").forEach(r => r.onclick = () => { cur = cur === r.dataset.k ? "all" : r.dataset.k; render(); });
+  document.getElementById("eng").innerHTML =
+    `<div><div class="l">Curtidas</div><div class="v">${short(o.likes)}</div></div>` +
+    `<div><div class="l">Comentários</div><div class="v">${short(o.comments)}</div></div>` +
+    `<div><div class="l">Compartilh.</div><div class="v">${short(o.shares)}</div></div>`;
+}
+document.querySelectorAll("#metric button").forEach(b => b.onclick = () => {
+  metric = b.dataset.m;
+  document.querySelectorAll("#metric button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+});
+document.querySelectorAll("#pseg button").forEach(b => b.onclick = () => { setPeriod(b.dataset.p); render(); });
+render();
+addEventListener("resize", () => { clearTimeout(window._r); window._r = setTimeout(render, 120); });
+
+// audience
+const gc = ["#7B474A", "#C9A9AC", "#D9D2CE"];
+let a0 = -Math.PI / 2, R = 52, r = 32, paths = "";
+D.gender.forEach((g, i) => {
+  const a1 = a0 + (g.v / 100) * Math.PI * 2 - 0.03;
+  const L = a1 - a0 > Math.PI ? 1 : 0;
+  const p = (rad, a) => `${60 + rad * Math.cos(a)},${60 + rad * Math.sin(a)}`;
+  paths += `<path d="M${p(R,a0)} A${R},${R} 0 ${L} 1 ${p(R,a1)} L${p(r,a1)} A${r},${r} 0 ${L} 0 ${p(r,a0)} Z" fill="${gc[i]}"><title>${g.k}: ${g.v.toFixed(1)}%</title></path>`;
+  a0 = a1 + 0.03;
+});
+document.getElementById("donut").innerHTML =
+  `<svg width="120" height="120" viewBox="0 0 120 120">${paths}<text x="60" y="58" text-anchor="middle" style="font:700 18px DM Sans;fill:#403033">76%</text><text x="60" y="74" text-anchor="middle" style="font:11px DM Sans;fill:#6D645F">mulheres</text></svg>` +
+  `<div class="gl">${D.gender.map((g, i) => `<div><span class="dot" style="background:${gc[i]}"></span>${g.k} <b>${g.v.toLocaleString("pt-BR",{maximumFractionDigits:0})}%</b></div>`).join("")}</div>`;
+const amax = Math.max(...D.age.map(a => a[1])), asum = D.age.reduce((s, a) => s + a[1], 0);
+document.getElementById("cols").innerHTML = D.age.map(([k, v]) =>
+  `<div class="col"><span class="p">${(v / asum * 100).toLocaleString("pt-BR",{maximumFractionDigits:0})}%</span><div class="b" style="height:${v / amax * 70}%"></div><span>${k}</span></div>`).join("");
+</script>
+</body>
+</html>
